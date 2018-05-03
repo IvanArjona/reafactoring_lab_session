@@ -216,7 +216,7 @@ public class Network {
 		Node currentNode = firstNode_;
 		Packet packet = new Packet("BROADCAST", firstNode_.name_, firstNode_.name_);
 		do {
-			currentNode.loggingPassPacket(report, this, true);
+			currentNode.loggingPassPacket(report, true);
 			
 			currentNode = currentNode.nextNode_;
 		} while (!packet.destination_.equals(currentNode.name_));
@@ -275,11 +275,11 @@ public class Network {
 
 		startNode = (Node) workstations_.get(workstation);
 
-		startNode.loggingPassPacket(report, this, false);
+		startNode.loggingPassPacket(report, false);
 		;
 		currentNode = startNode.nextNode_;
 		while ((!packet.destination_.equals(currentNode.name_)) & (!packet.origin_.equals(currentNode.name_))) {
-			currentNode.loggingPassPacket(report, this, false);
+			currentNode.loggingPassPacket(report, false);
 			;
 			currentNode = currentNode.nextNode_;
 		}
