@@ -216,7 +216,7 @@ public class Network {
 		Node currentNode = firstNode_;
 		Packet packet = new Packet("BROADCAST", firstNode_.name_, firstNode_.name_);
 		do {
-			loggingPassPacket(report, currentNode.name_, true);
+			loggingPassPacket(report, currentNode, true);
 			
 			currentNode = currentNode.nextNode_;
 		} while (!packet.destination_.equals(currentNode.name_));
@@ -275,11 +275,11 @@ public class Network {
 
 		startNode = (Node) workstations_.get(workstation);
 
-		loggingPassPacket(report, startNode.name_, false);
+		loggingPassPacket(report, startNode, false);
 		;
 		currentNode = startNode.nextNode_;
 		while ((!packet.destination_.equals(currentNode.name_)) & (!packet.origin_.equals(currentNode.name_))) {
-			loggingPassPacket(report, currentNode.name_, false);
+			loggingPassPacket(report, currentNode, false);
 			;
 			currentNode = currentNode.nextNode_;
 		}
@@ -301,14 +301,14 @@ public class Network {
 		return result;
 	}
 
-	private void loggingPassPacket(Writer report, String nodeName, boolean accepts) {
+	private void loggingPassPacket(Writer report, Node node, boolean accepts) {
 		try {
 			report.write("\tNode '");
-			report.write(nodeName);
+			report.write(node.name_);
 			if (accepts) {
 				report.write("' accepts broadcase packet.\n");
 				report.write("\tNode '");
-				report.write(nodeName);
+				report.write(node.name_);
 			}
 			report.write("' passes packet on.\n");
 			report.flush();
