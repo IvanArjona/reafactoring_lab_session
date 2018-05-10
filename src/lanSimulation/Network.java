@@ -142,11 +142,11 @@ public class Network {
 		if (workstations_.isEmpty()) {
 			return false;
 		}
-		;
+
 		if (firstNode_ == null) {
 			return false;
 		}
-		;
+
 		// verify whether all registered workstations are indeed workstations
 		iter = workstations_.elements();
 		while (iter.hasMoreElements()) {
@@ -154,9 +154,8 @@ public class Network {
 			if (currentNode.type_ != Node.WORKSTATION) {
 				return false;
 			}
-			;
 		}
-		;
+
 		// enumerate the token ring, verifying whether all workstations are registered
 		// also count the number of printers and see whether the ring is circular
 		currentNode = firstNode_;
@@ -165,27 +164,25 @@ public class Network {
 			if (currentNode.type_ == Node.WORKSTATION) {
 				workstationsFound++;
 			}
-			;
 			if (currentNode.type_ == Node.PRINTER) {
 				printersFound++;
 			}
-			;
 			currentNode = currentNode.nextNode_;
 		}
-		;
+
 		if (currentNode != firstNode_) {
 			return false;
 		}
-		;// not circular
+		// not circular
 		if (printersFound == 0) {
 			return false;
 		}
-		;// does not contain a printer
+		// does not contain a printer
 		if (workstationsFound != workstations_.size()) {
 			return false;
 		}
-		; // not all workstations are registered
-			// all verifications succeedeed
+		// not all workstations are registered
+		// all verifications succeedeed
 		return true;
 	}
 
@@ -211,7 +208,6 @@ public class Network {
 		} catch (IOException exc) {
 			// just ignore
 		}
-		;
 
 		Node currentNode = firstNode_;
 		Packet packet = new Packet("BROADCAST", firstNode_.name_, firstNode_.name_);
@@ -226,7 +222,7 @@ public class Network {
 		} catch (IOException exc) {
 			// just ignore
 		}
-		;
+
 		return true;
 	}
 
@@ -267,7 +263,6 @@ public class Network {
 		} catch (IOException exc) {
 			// just ignore
 		}
-		;
 
 		boolean result = false;
 		Node startNode, currentNode;
@@ -276,14 +271,11 @@ public class Network {
 		startNode = (Node) workstations_.get(workstation);
 
 		startNode.loggingPassPacket(report, false);
-		;
 		currentNode = startNode.nextNode_;
 		while ((!packet.destination_.equals(currentNode.name_)) & (!packet.origin_.equals(currentNode.name_))) {
 			currentNode.loggingPassPacket(report, false);
-			;
 			currentNode = currentNode.nextNode_;
 		}
-		;
 
 		if (packet.destination_.equals(currentNode.name_)) {
 			result = packet.printDocument(currentNode, this, report);
@@ -294,7 +286,6 @@ public class Network {
 			} catch (IOException exc) {
 				// just ignore
 			}
-			;
 			result = false;
 		}
 
@@ -350,10 +341,8 @@ public class Network {
 				break;
 			default:
 				buf.append("(Unexpected)");
-				;
 				break;
 			}
-			;
 			buf.append(" -> ");
 			currentNode = currentNode.nextNode_;
 		} while (currentNode != firstNode_);
@@ -392,10 +381,10 @@ public class Network {
 				break;
 			default:
 				buf.append("(Unexpected)");
-				;
+				
 				break;
 			}
-			;
+			
 			buf.append(" </LI>");
 			currentNode = currentNode.nextNode_;
 		} while (currentNode != firstNode_);
@@ -433,10 +422,9 @@ public class Network {
 				break;
 			default:
 				buf.append("<unknown></unknown>");
-				;
 				break;
 			}
-			;
+			
 			currentNode = currentNode.nextNode_;
 		} while (currentNode != firstNode_);
 		buf.append("\n</network>");

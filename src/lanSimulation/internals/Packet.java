@@ -74,20 +74,16 @@ public class Packet {
 						if (endPos < 0) {
 							endPos = message_.length();
 						}
-						;
 						author = message_.substring(startPos + 7, endPos);
 					}
-					;
 					startPos = message_.indexOf("title:");
 					if (startPos >= 0) {
 						endPos = message_.indexOf(".", startPos + 6);
 						if (endPos < 0) {
 							endPos = message_.length();
 						}
-						;
 						title = message_.substring(startPos + 6, endPos);
 					}
-					;
 					network.printAccounting(report, author, title);
 					report.write(">>> Postscript job delivered.\n\n");
 					report.flush();
@@ -96,7 +92,6 @@ public class Packet {
 					if (message_.length() >= 16) {
 						author = message_.substring(8, 16);
 					}
-					;
 					network.printAccounting(report, author, title);
 					report.write(">>> ASCII Print job delivered.\n\n");
 					report.flush();
@@ -105,7 +100,6 @@ public class Packet {
 			} catch (IOException exc) {
 				// just ignore
 			}
-			;
 			return true;
 		} else {
 			try {
@@ -114,7 +108,6 @@ public class Packet {
 			} catch (IOException exc) {
 				// just ignore
 			}
-			;
 			return false;
 		}
 	}
