@@ -96,7 +96,6 @@ public class Packet {
 					report.write(">>> ASCII Print job delivered.\n\n");
 					report.flush();
 				}
-				;
 			} catch (IOException exc) {
 				// just ignore
 			}
