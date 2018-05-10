@@ -212,8 +212,7 @@ public class Network {
 		Node currentNode = firstNode_;
 		Packet packet = new Packet("BROADCAST", firstNode_.name_, firstNode_.name_);
 		if (!atDestination(currentNode, packet)) {
-			currentNode.loggingPassPacket(report, true);
-			currentNode = currentNode.nextNode_;
+			currentNode = logNode(report, currentNode, true);
 		}
 		
 		currentNode = whileAtDestination(report, currentNode, packet, true);
@@ -229,10 +228,15 @@ public class Network {
 
 	private Node whileAtDestination(Writer report, Node currentNode, Packet packet, boolean accept) {
 		if (atDestination(currentNode, packet) && (!packet.origin_.equals(currentNode.name_))) {
-			currentNode.loggingPassPacket(report, accept);
-			currentNode = currentNode.nextNode_;
+			currentNode = logNode(report, currentNode, accept);
 			return whileAtDestination(report, currentNode, packet, accept);
 		}
+		return currentNode;
+	}
+
+	private Node logNode(Writer report, Node currentNode, boolean accept) {
+		currentNode.loggingPassPacket(report, accept);
+		currentNode = currentNode.nextNode_;
 		return currentNode;
 	}
 
