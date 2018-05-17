@@ -338,7 +338,7 @@ public class Network {
 		assert isInitialized();
 		Node currentNode = firstNode_;
 		do {
-			currentNode.printOn(buf, this);
+			currentNode.printOn(buf);
 			currentNode = currentNode.nextNode_;
 		} while (currentNode != firstNode_);
 		buf.append(" ... ");
@@ -357,7 +357,7 @@ public class Network {
 		Node currentNode = firstNode_;
 		buf.append("\n\n<UL>");
 		do {
-			currentNode.printHTMLOn(buf, this);
+			currentNode.printHTMLOn(buf);
 			currentNode = currentNode.nextNode_;
 		} while (currentNode != firstNode_);
 		buf.append("\n\t<LI>...</LI>\n</UL>\n\n</BODY>\n</HTML>\n");
@@ -375,7 +375,7 @@ public class Network {
 		Node currentNode = firstNode_;
 		buf.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<network>");
 		do {
-			currentNode.printXMLOn(buf, this);
+			currentNode.printXMLOn(buf);
 			currentNode = currentNode.nextNode_;
 		} while (currentNode != firstNode_);
 		buf.append("\n</network>");

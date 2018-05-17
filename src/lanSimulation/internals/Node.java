@@ -22,8 +22,6 @@ package lanSimulation.internals;
 import java.io.IOException;
 import java.io.Writer;
 
-import lanSimulation.Network;
-
 /**
  * A <em>Node</em> represents a single Node in a Local Area Network (LAN).
  * Several types of Nodes exist.
@@ -101,7 +99,7 @@ public class Node {
 		}
 	}
 
-	public void printOn(StringBuffer buf, Network network) {
+	public void printOn(StringBuffer buf) {
 		switch (type_) {
 		case Node.NODE:
 			buf.append("Node ");
@@ -125,7 +123,7 @@ public class Node {
 		buf.append(" -> ");
 	}
 
-	public void printHTMLOn(StringBuffer buf, Network network) {
+	public void printHTMLOn(StringBuffer buf) {
 		buf.append("\n\t<LI> ");
 		switch (type_) {
 		case Node.NODE:
@@ -150,7 +148,7 @@ public class Node {
 		buf.append(" </LI>");
 	}
 
-	public void printXMLOn(StringBuffer buf, Network network) {
+	public void printXMLOn(StringBuffer buf) {
 		buf.append("\n\t");
 		switch (type_) {
 		case Node.NODE:
