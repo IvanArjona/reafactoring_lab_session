@@ -30,7 +30,8 @@ public class Node {
 	/**
 	 * Holds the type of the Node.
 	 */
-	private byte type_;
+	private byte oldType_;
+	private NodeType type;
 	/**
 	 * Holds the name of the Node.
 	 */
@@ -159,11 +160,11 @@ public class Node {
 	}
 
 	public byte getType() {
-		return type_;
+		return oldType_;
 	}
 
 	public void setType(byte type_) {
-		this.type_ = type_;
+		this.oldType_ = type_;
 	}
 
 }
