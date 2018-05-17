@@ -1,6 +1,6 @@
 package lanSimulation.internals;
 
-public class NodeType {
+public abstract class NodeType {
 
 	// enumeration constants specifying all legal node types
 	/**
