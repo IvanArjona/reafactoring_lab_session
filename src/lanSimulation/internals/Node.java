@@ -27,20 +27,6 @@ import java.io.Writer;
  * Several types of Nodes exist.
  */
 public class Node {
-	// enumeration constants specifying all legal node types
-	/**
-	 * A node with type NODE has only basic functionality.
-	 */
-	public static final byte NODE = 0;
-	/**
-	 * A node with type WORKSTATION may initiate requests on the LAN.
-	 */
-	public static final byte WORKSTATION = 1;
-	/**
-	 * A node with type PRINTER may accept packages to be printed.
-	 */
-	public static final byte PRINTER = 2;
-
 	/**
 	 * Holds the type of the Node.
 	 */
@@ -63,7 +49,7 @@ public class Node {
 	 * </p>
 	 */
 	public Node(byte type, String name) {
-		assert (type >= NODE) & (type <= PRINTER);
+		assert (type >= NodeType.NODE) & (type <= NodeType.PRINTER);
 		setType(type);
 		name_ = name;
 		nextNode_ = null;
@@ -77,7 +63,7 @@ public class Node {
 	 * </p>
 	 */
 	public Node(byte type, String name, Node nextNode) {
-		assert (type >= NODE) & (type <= PRINTER);
+		assert (type >= NodeType.NODE) & (type <= NodeType.PRINTER);
 		setType(type);
 		name_ = name;
 		nextNode_ = nextNode;
@@ -101,17 +87,17 @@ public class Node {
 
 	public void printOn(StringBuffer buf) {
 		switch (getType()) {
-		case Node.NODE:
+		case NodeType.NODE:
 			buf.append("Node ");
 			buf.append(name_);
 			buf.append(" [Node]");
 			break;
-		case Node.WORKSTATION:
+		case NodeType.WORKSTATION:
 			buf.append("Workstation ");
 			buf.append(name_);
 			buf.append(" [Workstation]");
 			break;
-		case Node.PRINTER:
+		case NodeType.PRINTER:
 			buf.append("Printer ");
 			buf.append(name_);
 			buf.append(" [Printer]");
@@ -126,17 +112,17 @@ public class Node {
 	public void printHTMLOn(StringBuffer buf) {
 		buf.append("\n\t<LI> ");
 		switch (getType()) {
-		case Node.NODE:
+		case NodeType.NODE:
 			buf.append("Node ");
 			buf.append(name_);
 			buf.append(" [Node]");
 			break;
-		case Node.WORKSTATION:
+		case NodeType.WORKSTATION:
 			buf.append("Workstation ");
 			buf.append(name_);
 			buf.append(" [Workstation]");
 			break;
-		case Node.PRINTER:
+		case NodeType.PRINTER:
 			buf.append("Printer ");
 			buf.append(name_);
 			buf.append(" [Printer]");
@@ -151,17 +137,17 @@ public class Node {
 	public void printXMLOn(StringBuffer buf) {
 		buf.append("\n\t");
 		switch (getType()) {
-		case Node.NODE:
+		case NodeType.NODE:
 			buf.append("<node>");
 			buf.append(name_);
 			buf.append("</node>");
 			break;
-		case Node.WORKSTATION:
+		case NodeType.WORKSTATION:
 			buf.append("<workstation>");
 			buf.append(name_);
 			buf.append("</workstation>");
 			break;
-		case Node.PRINTER:
+		case NodeType.PRINTER:
 			buf.append("<printer>");
 			buf.append(name_);
 			buf.append("</printer>");

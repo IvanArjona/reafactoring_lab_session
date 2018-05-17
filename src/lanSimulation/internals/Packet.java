@@ -65,7 +65,7 @@ public class Packet {
 		String title = "Untitled";
 		int startPos = 0, endPos = 0;
 	
-		if (printer.getType() == Node.PRINTER) {
+		if (printer.getType() == NodeType.PRINTER) {
 			try {
 				if (message_.startsWith("!PS")) {
 					startPos = message_.indexOf("author:");
