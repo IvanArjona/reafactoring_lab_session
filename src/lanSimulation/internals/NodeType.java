@@ -18,4 +18,12 @@ public abstract class NodeType {
 
 	public abstract byte getCode();
 	
+	public void printOn(StringBuffer buf, String name) {
+		buf.append("(Unexpected)");
+	}
+	
+	public void printOnHTML(StringBuffer buf, String name) {
+		buf.append("<unknown></unknown>");
+	}
+	
 }
