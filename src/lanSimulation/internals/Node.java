@@ -44,7 +44,7 @@ public class Node {
 	/**
 	 * Holds the type of the Node.
 	 */
-	public byte type_;
+	private byte type_;
 	/**
 	 * Holds the name of the Node.
 	 */
@@ -64,7 +64,7 @@ public class Node {
 	 */
 	public Node(byte type, String name) {
 		assert (type >= NODE) & (type <= PRINTER);
-		type_ = type;
+		setType(type);
 		name_ = name;
 		nextNode_ = null;
 	}
@@ -78,7 +78,7 @@ public class Node {
 	 */
 	public Node(byte type, String name, Node nextNode) {
 		assert (type >= NODE) & (type <= PRINTER);
-		type_ = type;
+		setType(type);
 		name_ = name;
 		nextNode_ = nextNode;
 	}
@@ -100,7 +100,7 @@ public class Node {
 	}
 
 	public void printOn(StringBuffer buf) {
-		switch (type_) {
+		switch (getType()) {
 		case Node.NODE:
 			buf.append("Node ");
 			buf.append(name_);
@@ -125,7 +125,7 @@ public class Node {
 
 	public void printHTMLOn(StringBuffer buf) {
 		buf.append("\n\t<LI> ");
-		switch (type_) {
+		switch (getType()) {
 		case Node.NODE:
 			buf.append("Node ");
 			buf.append(name_);
@@ -150,7 +150,7 @@ public class Node {
 
 	public void printXMLOn(StringBuffer buf) {
 		buf.append("\n\t");
-		switch (type_) {
+		switch (getType()) {
 		case Node.NODE:
 			buf.append("<node>");
 			buf.append(name_);
@@ -170,6 +170,14 @@ public class Node {
 			buf.append("<unknown></unknown>");
 			break;
 		}
+	}
+
+	public byte getType() {
+		return type_;
+	}
+
+	public void setType(byte type_) {
+		this.type_ = type_;
 	}
 
 }

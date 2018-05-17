@@ -119,7 +119,7 @@ public class Network {
 		if (n == null) {
 			return false;
 		} else {
-			return n.type_ == Node.WORKSTATION;
+			return n.getType() == Node.WORKSTATION;
 		}
 	};
 
@@ -151,7 +151,7 @@ public class Network {
 		iter = workstations_.elements();
 		while (iter.hasMoreElements()) {
 			currentNode = (Node) iter.nextElement();
-			if (currentNode.type_ != Node.WORKSTATION) {
+			if (currentNode.getType() != Node.WORKSTATION) {
 				return false;
 			}
 		}
@@ -161,10 +161,10 @@ public class Network {
 		currentNode = firstNode_;
 		while (!encountered.containsKey(currentNode.name_)) {
 			encountered.put(currentNode.name_, currentNode);
-			if (currentNode.type_ == Node.WORKSTATION) {
+			if (currentNode.getType() == Node.WORKSTATION) {
 				workstationsFound++;
 			}
-			if (currentNode.type_ == Node.PRINTER) {
+			if (currentNode.getType() == Node.PRINTER) {
 				printersFound++;
 			}
 			currentNode = currentNode.nextNode_;
