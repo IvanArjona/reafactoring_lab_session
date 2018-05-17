@@ -30,8 +30,7 @@ public class Node {
 	/**
 	 * Holds the type of the Node.
 	 */
-	private byte oldType_;
-	private NodeType type;
+	private NodeType type_;
 	/**
 	 * Holds the name of the Node.
 	 */
@@ -160,11 +159,25 @@ public class Node {
 	}
 
 	public byte getType() {
-		return oldType_;
+		return this.type_.getCode();
 	}
 
 	public void setType(byte type_) {
-		this.oldType_ = type_;
+		this.type_ = createNodeType(type_);
+	}
+	
+	public NodeType createNodeType(byte type) {
+		switch (type) {
+		case NodeType.NODE:
+			return new DefaultNode();
+		case NodeType.WORKSTATION:
+			return new WorkStation();
+		case NodeType.PRINTER:
+			return new Printer();
+		default:
+			throw new RuntimeException("Wrong type");
+		}
+
 	}
 
 }

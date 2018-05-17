@@ -16,6 +16,6 @@ public abstract class NodeType {
 	 */
 	public static final byte PRINTER = 2;
 
-	public abstract int getCode();
+	public abstract byte getCode();
 	
 }

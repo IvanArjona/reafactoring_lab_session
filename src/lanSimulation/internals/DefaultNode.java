@@ -3,7 +3,7 @@ package lanSimulation.internals;
 public class DefaultNode extends NodeType {
 
 	@Override
-	public int getCode() {
+	public byte getCode() {
 		return NodeType.NODE;
 	}
 
