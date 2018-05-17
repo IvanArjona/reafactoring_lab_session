@@ -86,76 +86,19 @@ public class Node {
 	}
 
 	public void printOn(StringBuffer buf) {
-		switch (getType()) {
-		case NodeType.NODE:
-			buf.append("Node ");
-			buf.append(name_);
-			buf.append(" [Node]");
-			break;
-		case NodeType.WORKSTATION:
-			buf.append("Workstation ");
-			buf.append(name_);
-			buf.append(" [Workstation]");
-			break;
-		case NodeType.PRINTER:
-			buf.append("Printer ");
-			buf.append(name_);
-			buf.append(" [Printer]");
-			break;
-		default:
-			buf.append("(Unexpected)");
-			break;
-		}
+		type_.printOn(buf, name_);
 		buf.append(" -> ");
 	}
 
 	public void printHTMLOn(StringBuffer buf) {
 		buf.append("\n\t<LI> ");
-		switch (getType()) {
-		case NodeType.NODE:
-			buf.append("Node ");
-			buf.append(name_);
-			buf.append(" [Node]");
-			break;
-		case NodeType.WORKSTATION:
-			buf.append("Workstation ");
-			buf.append(name_);
-			buf.append(" [Workstation]");
-			break;
-		case NodeType.PRINTER:
-			buf.append("Printer ");
-			buf.append(name_);
-			buf.append(" [Printer]");
-			break;
-		default:
-			buf.append("(Unexpected)");
-			break;
-		}
+		type_.printOn(buf, name_);
 		buf.append(" </LI>");
 	}
 
 	public void printXMLOn(StringBuffer buf) {
 		buf.append("\n\t");
-		switch (getType()) {
-		case NodeType.NODE:
-			buf.append("<node>");
-			buf.append(name_);
-			buf.append("</node>");
-			break;
-		case NodeType.WORKSTATION:
-			buf.append("<workstation>");
-			buf.append(name_);
-			buf.append("</workstation>");
-			break;
-		case NodeType.PRINTER:
-			buf.append("<printer>");
-			buf.append(name_);
-			buf.append("</printer>");
-			break;
-		default:
-			buf.append("<unknown></unknown>");
-			break;
-		}
+		type_.printOnHTML(buf, name_);
 	}
 
 	public byte getType() {
